@@ -54,6 +54,7 @@ function changeCounter() {
 
 document.addEventListener("DOMContentLoaded", () => {
     parallax();
+    parallaxMobile();
     const hora = '123d : 23h : 56m : 11s'
     
     setPanel(hora, 'initial')
