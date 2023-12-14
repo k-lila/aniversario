@@ -9,7 +9,7 @@ function parallax() {
         document.querySelector('.card').style.setProperty('--rotatex', `${yangle * -1}deg`);
         document.querySelector('.card').style.setProperty('--rotatey', `${xangle}deg`);
         for (let i=0; i<100; i++) {
-            setPanel(`${xangle}`, i)
+            setPanel(`x:${Math.floor(xangle)}|y:${Math.floor(yangle)}`, i)
         }
     })
 };
@@ -18,7 +18,7 @@ function parallaxMobile() {
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', (event)=> {
             const devicex = event.beta;
-            const devicey = event.gama;
+            const devicey = event.gamma;
             for (let i=0; i<100; i++) {
                 setPanel(`x:${Math.round(devicex)}|y:${Math.round(devicey)}`, i)
             }
@@ -58,6 +58,5 @@ document.addEventListener("DOMContentLoaded", () => {
     parallaxMobile();
     const hora = '123d : 23h : 56m : 11s'
     
-    setPanel(hora, 'initial')
     changeCounter();
 })
