@@ -17,7 +17,7 @@ function parallax() {
 function parallaxMobile() {
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', (event)=> {
-            const devicex = event.beta;
+            const devicex = event.beta + 30;
             const devicey = event.gamma;
             document.querySelector('.card').style.setProperty('--rotatex', `${devicex * -1}deg`);
         document.querySelector('.card').style.setProperty('--rotatey', `${devicey}deg`);
