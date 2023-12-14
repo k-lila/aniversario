@@ -17,9 +17,10 @@ function parallax() {
 function parallaxMobile() {
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', (event)=> {
-            const alpha = event.alpha;
+            const devicex = event.beta;
+            const devicey = event.gama;
             for (let i=0; i<100; i++) {
-                setPanel(`${alpha}`, i)
+                setPanel(`x:${Math.round(devicex)}|y:${Math.round(devicey)}`, i)
             }
         }, true)
     }
