@@ -1,0 +1,49 @@
+
+.banner {
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate(-50%, 50%) perspective(200px) translateZ(75px);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.486);
+    &__panel::before {
+        content: attr(data-content);
+        font-size: 225%;
+        width: max-content;
+        white-space: nowrap;
+        position: absolute;
+        left: var(--left);
+    }
+    $width: 4px;
+    &__panel {
+        position: relative;
+        width: $width;
+        height: 50px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+    @for $i from 0 to 100 {
+        &__panel:nth-child(#{$i + 1}) {
+            --left: #{$width * $i * -1};
+            $delay: $i * 0.01s;
+            animation-delay: $delay;
+        }
+    }
+
+    @keyframes rotatePanel {
+        0% {transform: rotateX(0deg);}
+        100% {transform: rotateX(90deg);}
+    }
+
+    &--change {
+        animation: rotatePanel 0.5s ease-in;
+    }
+}
+
+
+
+

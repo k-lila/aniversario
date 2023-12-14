@@ -1,0 +1,48 @@
+
+$perspective: 200px;
+
+.card {
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 10%;
+    max-width: 800px;
+    max-height: 800px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
+    &__text-top,
+    &__text-bot {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        transform-style: preserve-3d;
+        transform: translate(-50%, 50%) perspective($perspective) translateZ(100px);
+    }    
+    &__text-top {
+        top: 20%;
+    }    
+    &__text-bot {
+        top: 80%;
+    }
+    &__count {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform-style: preserve-3d;
+        transform: perspective($perspective) translateZ(70px);
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .card {
+        width: 80svh;
+        height: 80svh;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .card {
+        width: 80svw;
+        height: 80svw;
+    }
+}
