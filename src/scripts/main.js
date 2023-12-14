@@ -39,7 +39,6 @@ function setPanel(string_data, num) {
     }
 };
 
-
 function changeCounter() {
     const panels = document.querySelectorAll('.banner__panel');
     document.getElementById('counter-btn').addEventListener('click', () => {
@@ -53,12 +52,8 @@ function changeCounter() {
     })
 }
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     parallax();
     parallaxMobile();
-    const hora = '123d : 23h : 56m : 11s'
-    
     changeCounter();
 })

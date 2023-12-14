@@ -46,8 +46,9 @@
 }
 
 @media screen and (max-width: 767px) {
-    $width: 2px;
+    $width: 3px;
     .banner {
+        top: 40%;
         transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(75px);
         &__panel {
             width: $width;
