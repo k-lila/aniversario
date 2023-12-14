@@ -8,8 +8,22 @@ function parallax() {
         const yangle = yoffset * 20;
         document.querySelector('.card').style.setProperty('--rotatex', `${yangle * -1}deg`);
         document.querySelector('.card').style.setProperty('--rotatey', `${xangle}deg`);
+        for (let i=0; i<100; i++) {
+            setPanel(`${xangle}`, i)
+        }
     })
 };
+
+function parallaxMobile() {
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', (event)=> {
+            const alpha = event.alpha;
+            for (let i=0; i<100; i++) {
+                setPanel(`${alpha}`, i)
+            }
+        }, true)
+    }
+}
 
 function setPanel(string_data, num) {
     const panels = document.querySelectorAll('.banner__panel');
@@ -28,8 +42,8 @@ function changeCounter() {
     document.getElementById('counter-btn').addEventListener('click', () => {
         panels.forEach((panel, index) => {
             panel.classList.add('banner--change');
+            setPanel('321d : 10h : 34m : 22s', index)
             panel.addEventListener('animationend', () => {
-                setPanel('321d : 10h : 34m : 22s', index)
                 panel.classList.remove('banner--change');
             });
         });

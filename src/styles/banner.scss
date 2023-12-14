@@ -1,3 +1,4 @@
+@import './variables.scss';
 
 .banner {
     display: flex;
@@ -6,7 +7,7 @@
     top: 50%;
     left: 50%;
     transform-style: preserve-3d;
-    transform: translate(-50%, 50%) perspective(200px) translateZ(75px);
+    transform: translate(-50%, 50%) perspective($perspective) translateZ(75px);
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.486);
     &__panel::before {
@@ -44,6 +45,15 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+    $width: 2px;
+    .banner {
+        transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(75px);
+        &__panel {
+            width: $width;
+        }
+    }
+}
 
 
 

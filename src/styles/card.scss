@@ -1,6 +1,5 @@
 
-$perspective: 200px;
-
+@import './variables.scss';
 .card {
     background-color: aqua;
     border: 2px solid black;
@@ -26,8 +25,12 @@ $perspective: 200px;
     }
     &__count {
         position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         top: 65%;
-        left: 50%;
+        left: 0%;
         transform-style: preserve-3d;
         transform: perspective($perspective) translateZ(70px);
     }
@@ -44,5 +47,22 @@ $perspective: 200px;
     .card {
         width: 80svw;
         height: 80svw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    $width: 2px;
+    .card {
+        &__text-top,
+        &__text-bot {
+            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(100px);
+        }
+        &__panel {
+            width: $width;
+        }
+        &__count {
+            transform: perspective($perspective-sm) translateZ(70px);
+            top: 80%;
+        }
     }
 }
