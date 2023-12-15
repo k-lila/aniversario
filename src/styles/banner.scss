@@ -1,60 +1,118 @@
 @import './variables.scss';
 
-.banner {
-    display: flex;
+@keyframes rotatePanel {
+    from {transform: rotateX(0deg);}
+    to {transform: rotateX(360deg);}
+}
+
+
+.banner-container {
     position: absolute;
-    overflow: hidden;
     top: 50%;
     left: 50%;
+    width: 100px;
+    transform: translate(-50%, 50%);
     transform-style: preserve-3d;
-    transform: translate(-50%, 50%) perspective($perspective) translateZ(75px);
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.486);
-    &__panel::before {
-        content: attr(data-content);
-        font-size: 225%;
-        width: max-content;
-        white-space: nowrap;
-        position: absolute;
-        left: var(--left);
-    }
-    $width: 4px;
+    background-color: brown;
+}
+
+.banner {
+    position: relative;
+    font-size: 150%;
+    text-wrap: nowrap;
+    transform-style: preserve-3d;
+
+    transform: perspective($perspective) translateZ(10px);
+    display: flex;
+
+    $width: 15px;
     &__panel {
+        background-color: rgba(0, 0, 0, 0.4);
         position: relative;
-        width: $width;
         height: 50px;
+        width: $width;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-    }
-    @for $i from 0 to 100 {
-        &__panel:nth-child(#{$i + 1}) {
-            --left: #{$width * $i * -1};
-            $delay: $i * 0.01s;
-            animation-delay: $delay;
+        animation: rotatePanel 5s infinite;
+
+        @for $i from 0 to 5 {
+            &:nth-child(#{$i + 1}) {
+                --left: #{$width * $i * -1};
+            }
         }
-    }
 
-    @keyframes rotatePanel {
-        0% {transform: rotateX(0deg);}
-        100% {transform: rotateX(90deg);}
-    }
-
-    &--change {
-        animation: rotatePanel 0.5s ease-in;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    $width: 3px;
-    .banner {
-        top: 40%;
-        transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(75px);
-        &__panel {
-            width: $width;
+        span {
+            position: absolute;
+            left: var(--left);
         }
     }
 }
+
+
+
+
+// .banner {
+//     display: flex;
+//     position: relative;
+//     overflow: hidden;
+//     transform-style: preserve-3d;
+//     // transform: translate(-50%, 50%) perspective($perspective) translateZ(50px);
+//     // transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
+//     border-radius: 10px;
+
+
+//     &__panel::before {
+//         content: attr(data-content);
+//         font-size: 225%;
+//         width: max-content;
+//         white-space: nowrap;
+//         position: absolute;
+//         left: var(--left);
+//         transform-style: preserve-3d;
+//     }
+//     $width: 4px;
+//     &__panel {
+//         background-color: rgba(0, 0, 0, 0.486);
+//         position: relative;
+//         width: $width;
+//         height: 50px;
+//         overflow: hidden;
+//         display: flex;
+//         align-items: center;
+//         &::after {
+//             position: relative;
+//         }
+//     }
+    
+
+
+//     @for $i from 0 to 100 {
+//         &__panel:nth-child(#{$i + 1}) {
+//             --left: #{$width * $i * -1};
+//             $delay: $i * 0.01s;
+//             animation-delay: $delay;
+//         }
+//     }
+
+//     @keyframes rotatePanel {
+//         from {transform: rotateX(0deg);}
+//         to {transform: rotateX(180deg);}
+//     }
+
+//     &--change {
+//         animation: rotatePanel 2s forwards;
+//     }
+// }
+
+// @media screen and (max-width: 767px) {
+//     $width: 3px;
+//     .banner {
+//         top: 40%;
+//         transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(75px);
+//         &__panel {
+//             width: $width;
+//         }
+//     }
+// }
 
 
 
