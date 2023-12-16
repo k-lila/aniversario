@@ -1,39 +1,50 @@
 @import './variables.scss';
-
-@keyframes rotatePanel {
+@keyframes rotatePanelX {
     from {transform: rotateX(0deg);}
     to {transform: rotateX(360deg);}
 }
-
+@keyframes rotatePanelY {
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(360deg);}
+}
+@keyframes rotatePanelZ {
+    from {transform: rotateZ(0deg);}
+    to {transform: rotateZ(360deg);}
+}
 .banner-container {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     width: max-content;
     transform: translate(-50%, 50%);
     transform-style: preserve-3d;
-    &__btn {
+    button {
         position: inherit;
-        padding: 2px 5px;
-        top: 150%;
-        left: 125px;
-        width: 50px;
+        top: 175%;
         transform-style: preserve-3d;
         transform: perspective($perspective) translateZ(70px);
+        padding: 2px 5px;
+    }
+    &__btn {
+        left: 125px;
+        width: 50px;
+    }
+    
+    &__parallax-btn {
+        left: 75%;
     }
 }
 .banner {
     position: relative;
-    font-size: 150%;
+    font-size: 200%;
     text-wrap: nowrap;
     transform-style: preserve-3d;
     transform: perspective($perspective) translateZ(75px);
     display: flex;
-    height: 50px;
-    border-radius: 20px;
+    height: 40px;
     $width: 3px;
     &__panel {
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 255, 0.3);
         display: flex;
         align-items: center;
         position: relative;
@@ -42,7 +53,7 @@
         overflow: hidden;
         @for $i from 0 to 100 {
             &:nth-child(#{$i + 1}) {
-                --left: #{$width * $i * -1};
+                --left: #{6px + $width * $i * -1};
                 animation-delay: #{0.01s * $i};
             }
         }
@@ -51,17 +62,20 @@
             left: var(--left);
         }
     }
-    &--rotate {
-        animation: rotatePanel 0.5s forwards;
+    &--rotateX {
+        animation: rotatePanelX 0.5s forwards;
+    }
+    &--rotateY {
+        animation: rotatePanelY 0.5s forwards;
+    }
+    &--rotateZ {
+        animation: rotatePanelZ 0.5s forwards;
     }
 }
-
 @media screen and (max-width: 767px) {
-
     .banner-container {
         top: 35%;
     }
-
     .banner {
         transform: perspective($perspective-sm) translateZ(75PX);
     }

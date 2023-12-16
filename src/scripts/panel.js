@@ -11,12 +11,12 @@ function getData() {
     var string_data = '';
     if (dataAtual > aniversario) {
         lastNiver = new Date(aniversario);
-        aniversario.setFullYear(dataAtual.getFullYear() + 1)
+        aniversario.setFullYear(dataAtual.getFullYear() + 1);
     }
     return [dataAtual, aniversario, lastNiver]
-}
+};
 
-function setBanner(typeBanner) {
+function getStringBanner(typeBanner) {
     const datas = getData();
     const secMs = 1000;
     const minMs = secMs * 60;
@@ -26,33 +26,57 @@ function setBanner(typeBanner) {
     if (typeBanner == 'regressive') {
         milisec = datas[1] - datas[0];
     } else if (typeBanner == 'progressive') {
-        milisec = datas[0] - datas[2]
+        milisec = datas[0] - datas[2];
     }
     const diasAte = Math.floor(milisec / diasMs);
     const horasAte = Math.floor((milisec % diasMs) / horMs);
     const minAte = Math.floor((milisec % horMs) / minMs);
     const secAte = Math.floor((milisec % minMs) / secMs);
-    const string_data = `${diasAte}d : ${horasAte}h : ${minAte}m : ${secAte}s`
-    return string_data
-}
+    const dias= `${diasAte}`.padStart(3, '0') + 'd';
+    const horas= `${horasAte}`.padStart(2, '0') + 'h';
+    const minutos= `${minAte}`.padStart(2, '0') + 'm';
+    const segundos= `${secAte}`.padStart(2, '0') + 's';
+    return `${dias} : ${horas} : ${minutos} : ${segundos}`
+};
 
-export function upBanner(typeBanner) {
-    const shows = setBanner(typeBanner);
+function upBanner(typeBanner) {
+    const show = getStringBanner(typeBanner);
     for (let i=0; i<100; i++) {
-        setPanel(shows, i);
+        setPanel(show, i);
     };
-}
+};
 
-export function changeCounter(typeBanner) {
+function changeCounter(typeBanner) {
     const panels = document.querySelectorAll('.banner__panel');
-    const string_data = setBanner(typeBanner);
+    const string_data = getStringBanner(typeBanner);
+    const animations = ['banner--rotateX', 'banner--rotateY', 'banner--rotateZ']
+    const randomIndex = Math.floor(Math.random() * 3);
     panels.forEach((panel, index) => {
-        panel.classList.add('banner--rotate');
+        panel.classList.add(animations[randomIndex]);
         setTimeout(() => {
             setPanel(string_data, index)
         }, (10 * index) + 250);
         panel.addEventListener('animationend', () => {
-            panel.classList.remove('banner--rotate');
+            panel.classList.remove(animations[randomIndex]);
         });    
     });
+};
+
+export function banner(typeBanner) {
+    var typeBanner = 'regressive';
+    upBanner(typeBanner);
+    let todoSegundo = setInterval(() => {upBanner(typeBanner)}, 1000);
+    document.getElementById('counter-btn')
+    .addEventListener('click', () => {
+        clearInterval(todoSegundo);
+        if (typeBanner == 'progressive') {
+            typeBanner = 'regressive';
+        } else {
+            typeBanner = 'progressive';
+        };
+        changeCounter(typeBanner);
+        todoSegundo = setInterval(() => {
+            upBanner(typeBanner);
+        }, 1000);
+    });    
 };

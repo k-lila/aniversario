@@ -1,1 +1,1 @@
-import{addParallax}from"./parallax.js";import{changeCounter,upBanner}from"./panel.js";document.addEventListener("DOMContentLoaded",()=>{var e="progressive";addParallax(!0),upBanner(e);let r=setInterval(()=>{upBanner(e)},1e3);document.getElementById("counter-btn").addEventListener("click",()=>{clearInterval(r),changeCounter(e="progressive"==e?"regressive":"progressive"),r=setInterval(()=>{upBanner(e)},1e3)})});
+import{parallax}from"./parallax.js";import{banner}from"./panel.js";function main(){parallax(),banner()}document.addEventListener("DOMContentLoaded",()=>{main()});
