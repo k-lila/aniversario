@@ -4,8 +4,8 @@
     background-color: aqua;
     border: 2px solid black;
     border-radius: 10%;
-    width: 800px;
-    height: 800px;
+    max-width: 800px;
+    max-height: 800px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
@@ -22,5 +22,26 @@
     }    
     &__text-bot {
         top: 80%;
+    }
+
+    @media screen and (orientation: portrait) {
+        width: 90vw;
+        height: 90vw;
+    }
+    @media screen and (orientation: landscape) {
+        height: 90svh;
+        width: 90svh;
+    }
+    @media screen and (max-width: 767px) {
+        &__text-top,
+        &__text-bot {
+            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(100px);
+        }
+        &__text-top {
+            top: 15%;
+        }    
+        &__text-bot {
+            top: 70%;
+        }
     }
 }

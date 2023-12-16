@@ -55,3 +55,14 @@
         animation: rotatePanel 0.5s forwards;
     }
 }
+
+@media screen and (max-width: 767px) {
+
+    .banner-container {
+        top: 35%;
+    }
+
+    .banner {
+        transform: perspective($perspective-sm) translateZ(75PX);
+    }
+}
