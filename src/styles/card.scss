@@ -9,7 +9,7 @@
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
-    transition: transform 0.2s ease-in;
+    transition: transform 0.2s linear;
 
     &__text-top,
     &__text-bot {
