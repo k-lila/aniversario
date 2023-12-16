@@ -4,8 +4,8 @@
     background-color: aqua;
     border: 2px solid black;
     border-radius: 10%;
-    max-width: 800px;
-    max-height: 800px;
+    width: 800px;
+    height: 800px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
@@ -22,51 +22,5 @@
     }    
     &__text-bot {
         top: 80%;
-    }
-    &__count {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        top: 65%;
-        left: 0%;
-        transform-style: preserve-3d;
-        transform: perspective($perspective) translateZ(70px);
-    }
-}
-
-@media screen and (orientation: landscape) {
-    .card {
-        width: 80svh;
-        height: 80svh;
-    }
-}
-
-@media screen and (orientation: portrait) {
-    .card {
-        width: 80svw;
-        height: 80svw;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .card {
-        &__text-top,
-        &__text-bot {
-            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(100px);
-        }
-
-        &__text-top {
-            top: 15%;
-        }
-        &__text-bot {
-            top: 70%;
-        }
-
-        &__count {
-            transform: perspective($perspective-sm) translateZ(70px);
-            top: 62%;
-        }
     }
 }

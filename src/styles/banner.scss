@@ -5,114 +5,53 @@
     to {transform: rotateX(360deg);}
 }
 
-
 .banner-container {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100px;
+    width: max-content;
     transform: translate(-50%, 50%);
     transform-style: preserve-3d;
-    background-color: brown;
+    &__btn {
+        position: inherit;
+        padding: 2px 5px;
+        top: 150%;
+        left: 125px;
+        width: 50px;
+        transform-style: preserve-3d;
+        transform: perspective($perspective) translateZ(70px);
+    }
 }
-
 .banner {
     position: relative;
     font-size: 150%;
     text-wrap: nowrap;
     transform-style: preserve-3d;
-
-    transform: perspective($perspective) translateZ(10px);
+    transform: perspective($perspective) translateZ(75px);
     display: flex;
-
-    $width: 15px;
+    height: 50px;
+    border-radius: 20px;
+    $width: 3px;
     &__panel {
         background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
         position: relative;
-        height: 50px;
+        height: 100%;
         width: $width;
         overflow: hidden;
-        animation: rotatePanel 5s infinite;
-
-        @for $i from 0 to 5 {
+        @for $i from 0 to 100 {
             &:nth-child(#{$i + 1}) {
                 --left: #{$width * $i * -1};
+                animation-delay: #{0.01s * $i};
             }
         }
-
         span {
             position: absolute;
             left: var(--left);
         }
     }
+    &--rotate {
+        animation: rotatePanel 0.5s forwards;
+    }
 }
-
-
-
-
-// .banner {
-//     display: flex;
-//     position: relative;
-//     overflow: hidden;
-//     transform-style: preserve-3d;
-//     // transform: translate(-50%, 50%) perspective($perspective) translateZ(50px);
-//     // transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
-//     border-radius: 10px;
-
-
-//     &__panel::before {
-//         content: attr(data-content);
-//         font-size: 225%;
-//         width: max-content;
-//         white-space: nowrap;
-//         position: absolute;
-//         left: var(--left);
-//         transform-style: preserve-3d;
-//     }
-//     $width: 4px;
-//     &__panel {
-//         background-color: rgba(0, 0, 0, 0.486);
-//         position: relative;
-//         width: $width;
-//         height: 50px;
-//         overflow: hidden;
-//         display: flex;
-//         align-items: center;
-//         &::after {
-//             position: relative;
-//         }
-//     }
-    
-
-
-//     @for $i from 0 to 100 {
-//         &__panel:nth-child(#{$i + 1}) {
-//             --left: #{$width * $i * -1};
-//             $delay: $i * 0.01s;
-//             animation-delay: $delay;
-//         }
-//     }
-
-//     @keyframes rotatePanel {
-//         from {transform: rotateX(0deg);}
-//         to {transform: rotateX(180deg);}
-//     }
-
-//     &--change {
-//         animation: rotatePanel 2s forwards;
-//     }
-// }
-
-// @media screen and (max-width: 767px) {
-//     $width: 3px;
-//     .banner {
-//         top: 40%;
-//         transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(75px);
-//         &__panel {
-//             width: $width;
-//         }
-//     }
-// }
-
-
-
