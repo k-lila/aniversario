@@ -3,7 +3,7 @@ const sass = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
 const htmlmin = require('gulp-htmlmin');
 const uglify = require('gulp-uglify');
-
+const imagemin = require('gulp-imagemin');
 
 
 gulp.task('html', function() {
@@ -30,20 +30,24 @@ gulp.task('script', function() {
     .pipe(gulp.dest('./dist/scripts'))
 });
 
+gulp.task('image', function() {
+    return gulp.src('./src/images/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./dist/images'))
+})
+
 gulp.task('build', gulp.parallel(
     'html',
     'style',
-    'script'
+    'script',
+    'image'
 ));
 
 gulp.task('default', function() {
-    
     gulp.watch('./src/index.html', {ignoreInitial: false}, gulp.series('html'))
     gulp.watch('./src/styles/*', {ignoreInitial: false}, gulp.series('style'))
     gulp.watch('./src/scripts/*', {ignoreInitial: false}, gulp.series('script'))
-
-
-
+    gulp.watch('./src/images/*', {ignoreInitial: false}, gulp.series('image'))
 })
 
 

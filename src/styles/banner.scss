@@ -13,36 +13,36 @@
 }
 .banner-container {
     position: absolute;
-    top: 45%;
     left: 50%;
+    top: 45%;
     width: max-content;
     transform: translate(-50%, 50%);
     transform-style: preserve-3d;
     button {
         position: inherit;
-        top: 175%;
+        top: 150%;
         transform-style: preserve-3d;
         transform: perspective($perspective) translateZ(70px);
         padding: 2px 5px;
     }
     &__btn {
-        left: 125px;
+        left: 225px;
         width: 50px;
     }
     
     &__parallax-btn {
-        left: 75%;
+        left: 100%;
     }
 }
 .banner {
     position: relative;
-    font-size: 200%;
+    font-size: 325%;
     text-wrap: nowrap;
     transform-style: preserve-3d;
     transform: perspective($perspective) translateZ(75px);
     display: flex;
-    height: 40px;
-    $width: 3px;
+    height: 60px;
+    $width: 5px;
     &__panel {
         background-color: rgba(0, 0, 255, 0.3);
         display: flex;
@@ -53,7 +53,7 @@
         overflow: hidden;
         @for $i from 0 to 100 {
             &:nth-child(#{$i + 1}) {
-                --left: #{6px + $width * $i * -1};
+                --left: #{15px + $width * $i * -1};
                 animation-delay: #{0.01s * $i};
             }
         }
@@ -74,9 +74,31 @@
 }
 @media screen and (max-width: 767px) {
     .banner-container {
-        top: 35%;
+        top: 30%;
+        button {
+            transform: perspective($perspective-sm) translateZ(45px);
+            top: 120%;
+        }
+        &__btn {
+            left: 125px;
+            width: 50px;
+        }
+        &__parallax-btn {
+            left: 75%;
+        }
     }
     .banner {
-        transform: perspective($perspective-sm) translateZ(75PX);
+        font-size: 200%;
+        transform: perspective($perspective-sm) translateZ(50PX);
+        &__panel {
+            $width: 3px;
+            width: $width;
+            overflow: hidden;
+            @for $i from 0 to 100 {
+                &:nth-child(#{$i + 1}) {
+                    --left: #{7px + $width * $i * -1};
+                }
+            }
+        }
     }
 }
