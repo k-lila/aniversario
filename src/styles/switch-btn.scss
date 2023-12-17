@@ -1,0 +1,72 @@
+@import './variables.scss';
+
+.btn-container {
+    position: absolute;
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    top: 62%;
+    left: 51%;
+    transform-style: preserve-3d;
+    transform: perspective($perspective) translateZ(70px);
+}
+
+.switch-btn {
+    position: relative;
+    height: 20px;
+    width: 50px;
+    border-radius: 10px;
+    background-color: black;
+    border: 1px solid rgba(0, 0, 0, 0.9);
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    transform-style: preserve-3d;
+    &__text {
+        font-size: 18px;
+        width: 50px;
+        text-align: center;
+    }
+    &__toggler {
+        position: absolute;
+        top: 1px;
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.9);
+        background-color: rgba(255, 255, 255, 0.7);
+        transition: 0.3s ease-out;
+        transform: perspective($perspective) translateZ(3px);
+
+    }
+    
+    &--on {
+        transition: 0.3s ease-out;
+        background-color: rgba(0, 128, 0, 0.8);
+        .switch-btn__toggler {
+            transform: perspective($perspective) translateZ(5px);
+            left: 31px;
+        }
+    }
+    &--off {
+        transition: 0.3s ease-out;
+        background-color: rgba(255, 0, 0, 0.3);
+        .switch-btn__toggler {
+            transform: perspective($perspective) translateZ(-1px) rotateY(180deg);
+            left: 1px;
+        }
+    }
+    &--reg {
+        background-color: transparent;
+        .switch-btn__toggler {
+            left: 32px;
+        }
+    }
+
+    &--prog {
+        background-color: transparent;
+        .switch-btn__toggler {
+            left: 3px;
+        }
+    }
+}

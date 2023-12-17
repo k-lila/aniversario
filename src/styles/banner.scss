@@ -18,21 +18,6 @@
     width: max-content;
     transform: translate(-50%, 50%);
     transform-style: preserve-3d;
-    button {
-        position: inherit;
-        top: 150%;
-        transform-style: preserve-3d;
-        transform: perspective($perspective) translateZ(70px);
-        padding: 2px 5px;
-    }
-    &__btn {
-        left: 225px;
-        width: 50px;
-    }
-    
-    &__parallax-btn {
-        left: 100%;
-    }
 }
 .banner {
     position: relative;

@@ -4,4 +4,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+
+.body {
+    background-image: url(../images/background2.png);
+    background-size: cover;
+    background-position: center;
 }

@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./dist/styles/main.css">
 </head>
-<body style="background-image: url(./dist/images/background.png); background-size: cover;">
+<body class="body">
     <div class="container">
         <section class="card" id="card">
             <div class="card__glass"></div>
@@ -117,8 +117,16 @@
                 
                 
                 </div>
-                <button type="button" class="banner-container__btn" id="counter-btn">trocar</button>
-                <button type="button" class="banner-container__parallax-btn" id="parallax-btn">parallax</button>
+            </div>
+            <div class="btn-container">
+                <div class="switch-btn switch-btn--reg" id="toggler-date">
+                    <span class="switch-btn__text"></span>
+                    <div class="switch-btn__toggler"></div>
+                </div>
+                <div class="switch-btn switch-btn--on" id="toggler-parallax">
+                    <span class="switch-btn__text">tilt</span>
+                    <div class="switch-btn__toggler"></div>
+                </div>
             </div>
         </section>
     </div>

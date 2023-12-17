@@ -66,7 +66,7 @@ export function banner(typeBanner) {
     var typeBanner = 'regressive';
     upBanner(typeBanner);
     let todoSegundo = setInterval(() => {upBanner(typeBanner)}, 1000);
-    document.getElementById('counter-btn')
+    document.getElementById('toggler-date')
     .addEventListener('click', () => {
         clearInterval(todoSegundo);
         if (typeBanner == 'progressive') {

@@ -35,7 +35,7 @@ function toggleParallax(toggler) {
 export function parallax() {
     var parallax = true;
     toggleParallax(parallax);
-    document.getElementById('parallax-btn')
+    document.getElementById('toggler-parallax')
     .addEventListener('click', () => {
         parallax = !parallax;
         toggleParallax(parallax);
