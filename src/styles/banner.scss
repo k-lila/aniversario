@@ -88,7 +88,7 @@
         }
     }
     .banner {
-        font-size: 200%;
+        font-size: 150%;
         transform: perspective($perspective-sm) translateZ(50PX);
         &__panel {
             $width: 3px;
