@@ -29,7 +29,7 @@
     height: 60px;
     $width: 5px;
     &__panel {
-        background-color: rgba(0, 0, 255, 0.3);
+        background-color: rgba(0, 0, 255, 0.2);
         display: flex;
         align-items: center;
         position: relative;
@@ -59,7 +59,7 @@
 }
 @media screen and (max-width: 767px) {
     .banner-container {
-        top: 28%;
+        top: 27%;
         button {
             transform: perspective($perspective-sm) translateZ(50px);
             top: 120%;
