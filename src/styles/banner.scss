@@ -34,8 +34,8 @@
         align-items: center;
         position: relative;
         height: 100%;
-        width: $width;
         overflow: hidden;
+        width: $width;
         @for $i from 0 to 100 {
             &:nth-child(#{$i + 1}) {
                 --left: #{15px + $width * $i * -1};
@@ -61,7 +61,7 @@
     .banner-container {
         top: 30%;
         button {
-            transform: perspective($perspective-sm) translateZ(45px);
+            transform: perspective($perspective-sm) translateZ(50px);
             top: 120%;
         }
         &__btn {
@@ -74,7 +74,7 @@
     }
     .banner {
         font-size: 180%;
-        transform: perspective($perspective-sm) translateZ(50PX);
+        transform: perspective($perspective-sm) translateZ(45px);
         &__panel {
             $width: 3px;
             width: $width;

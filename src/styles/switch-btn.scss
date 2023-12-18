@@ -2,19 +2,27 @@
 
 .btn-container {
     position: absolute;
-    display: flex;
-    width: 25%;
-    justify-content: space-between;
-    top: 62%;
-    left: 51%;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 2px;
+    border-radius: 10px;
+    top: 57%;
+    left: 50%;
     transform-style: preserve-3d;
-    transform: perspective($perspective) translateZ(70px);
+    transform: perspective($perspective) translateZ(70px) translate(-50%, 50%);
+    @media screen and (max-width: 767px)  {
+        display: flex;
+        top: 53%;
+        left: 50%;
+        transform: perspective($perspective-sm) translateZ(45px) translate(-50%, 50%)scale(0.75);
+    }
 }
 
 .switch-btn {
     position: relative;
     height: 20px;
-    width: 50px;
+    width: 60px;
     border-radius: 10px;
     background-color: black;
     border: 1px solid rgba(0, 0, 0, 0.9);
@@ -24,7 +32,7 @@
     transform-style: preserve-3d;
     &__text {
         font-size: 18px;
-        width: 50px;
+        width: 60px;
         text-align: center;
     }
     &__toggler {
@@ -36,7 +44,8 @@
         border: 1px solid rgba(0, 0, 0, 0.9);
         background-color: rgba(255, 255, 255, 0.7);
         transition: 0.3s ease-out;
-        transform: perspective($perspective) translateZ(3px);
+        left: 1px;
+
 
     }
     
@@ -44,29 +53,24 @@
         transition: 0.3s ease-out;
         background-color: rgba(0, 128, 0, 0.8);
         .switch-btn__toggler {
-            transform: perspective($perspective) translateZ(5px);
-            left: 31px;
+            left: 41px;
         }
     }
     &--off {
         transition: 0.3s ease-out;
         background-color: rgba(255, 0, 0, 0.3);
-        .switch-btn__toggler {
-            transform: perspective($perspective) translateZ(-1px) rotateY(180deg);
-            left: 1px;
-        }
     }
     &--reg {
         background-color: transparent;
         .switch-btn__toggler {
-            left: 32px;
+            left: 41px;
         }
     }
 
     &--prog {
         background-color: transparent;
-        .switch-btn__toggler {
-            left: 3px;
-        }
     }
+
+    
+    
 }
