@@ -13,7 +13,7 @@
     transform: perspective($perspective) translateZ(70px) translate(-50%, 50%);
     @media screen and (max-width: 767px)  {
         display: flex;
-        top: 53%;
+        top: 52%;
         left: 50%;
         transform: perspective($perspective-sm) translateZ(45px) translate(-50%, 50%)scale(0.75);
     }
