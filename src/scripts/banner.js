@@ -1,4 +1,4 @@
-function setPanel(string_data, num) {
+export function setPanel(string_data, num) {
     const panels = document.querySelectorAll('.banner__panel');
     panels[num].querySelector('span').innerHTML = string_data;
 };

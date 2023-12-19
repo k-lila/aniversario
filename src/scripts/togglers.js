@@ -11,12 +11,26 @@ function togglerParallax() {
 }
 
 function changeText(text) {
+    const top = document.getElementById('text-top');
+    const bot = document.getElementById('text-bot');
     if (text == 'regressiva') {
-        document.getElementById('text-top').innerHTML = 'Faltam...';
-        document.getElementById('text-bot').innerHTML = 'para meu aniversário!';
+        top.classList.add('card--ofuscate');
+        bot.classList.add('card--ofuscate');
+        setTimeout(() => {
+            top.innerHTML = 'FALTAM...';
+            bot.innerHTML = 'PARA MEU ANIVERSÁRIO!';
+            bot.classList.remove('card--ofuscate');
+            top.classList.remove('card--ofuscate');
+        }, 250)
     }   else if (text == 'progressiva') {
-        document.getElementById('text-top').innerHTML = 'Passaram...';
-        document.getElementById('text-bot').innerHTML = 'desde meu aniversário!';
+        top.classList.add('card--ofuscate');
+        bot.classList.add('card--ofuscate');
+        setTimeout(() => {
+            document.getElementById('text-top').innerHTML = 'PASSARAM   ...';
+            document.getElementById('text-bot').innerHTML = 'DESDE MEU ANIVERSÁRIO!';
+            bot.classList.remove('card--ofuscate');
+            top.classList.remove('card--ofuscate');
+        }, 250) 
     }
 }
 
@@ -38,7 +52,8 @@ function togglerDate() {
 }
 
 export function setTogglers() {
-    changeText('regressiva')
+    document.getElementById('text-top').innerHTML = 'FALTAM...';
+    document.getElementById('text-bot').innerHTML = 'PARA MEU ANIVERSÁRIO!';
     document.getElementById('toggler-parallax')
     .addEventListener('click', () => {
         togglerParallax();

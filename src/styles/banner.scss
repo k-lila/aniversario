@@ -11,14 +11,22 @@
     from {transform: rotateZ(0deg);}
     to {transform: rotateZ(360deg);}
 }
+@keyframes wave {
+    0% {transform: translateZ(0);}
+    33% {transform: translateZ(5px) scale(1.25);}
+    66% {transform: translateZ(0);}
+    
+}
+
 .banner-container {
     position: absolute;
     left: 50%;
-    top: 45%;
+    top: 30%;
     width: max-content;
     transform: translate(-50%, 50%);
     transform-style: preserve-3d;
 }
+
 .banner {
     position: relative;
     font-size: 325%;
@@ -56,10 +64,14 @@
     &--rotateZ {
         animation: rotatePanelZ 0.5s forwards;
     }
+    &--wave {
+        animation: wave 0.5s ease-in-out;
+    }
 }
+
 @media screen and (max-width: 767px) {
     .banner-container {
-        top: 27%;
+        top: 22%;
         button {
             transform: perspective($perspective-sm) translateZ(50px);
             top: 120%;

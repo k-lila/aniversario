@@ -5,7 +5,6 @@
     transform-style: preserve-3d;
     transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
     transition: transform 0.2s linear;
-    
     &__glass {
         height: 100%;
         border-radius: 10%;
@@ -15,27 +14,47 @@
         border: 2px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
     }
-
     &__text-top,
     &__text-bot {
-        font-size: 175%;
+        font-size: 125%;
         text-align: center;
         position: absolute;
         left: 50%;
         transform-style: preserve-3d;
         transform: translate(-50%, 50%) perspective($perspective) translateZ(100px);
+        h1 {
+            transition: opacity 0.2s;
+        }
     }    
     &__text-top {
-        top: 20%;
+        top: 15%;
     }    
     &__text-bot {
         top: 75%;
         width: 100%;
     }
-
+    &__menu {
+        display: flex;
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, 50%) perspective($perspective) translateZ(65px);
+        padding: 7px 10px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transform-style: preserve-3d;
+    }
+    &--ofuscate {
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+    }
     @media screen and (orientation: portrait) {
         width: 90vw;
         height: 90vw;
+        @media screen and (max-width: 767px) {
+            height: 50vh;
+        }
     }
     @media screen and (orientation: landscape) {
         height: 90svh;
@@ -48,11 +67,15 @@
             transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(50px);
         }
         &__text-top {
-            top: 7%;
+            top: 6%;
         }    
         &__text-bot {
-            top: 55%;
+            top: 60%;
             width: 90%;
+        }
+        &__menu {
+            top: 39%;
+            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(40px) scale(0.7);
         }
     }
 }
