@@ -18,7 +18,7 @@ function changeText(text) {
         bot.classList.add('card--ofuscate');
         setTimeout(() => {
             top.innerHTML = 'FALTAM...';
-            bot.innerHTML = 'PARA MEU ANIVERSÁRIO!';
+            bot.innerHTML = 'PARA O MEU ANIVERSÁRIO!';
             bot.classList.remove('card--ofuscate');
             top.classList.remove('card--ofuscate');
         }, 250)
@@ -26,8 +26,8 @@ function changeText(text) {
         top.classList.add('card--ofuscate');
         bot.classList.add('card--ofuscate');
         setTimeout(() => {
-            document.getElementById('text-top').innerHTML = 'PASSARAM   ...';
-            document.getElementById('text-bot').innerHTML = 'DESDE MEU ANIVERSÁRIO!';
+            document.getElementById('text-top').innerHTML = 'PASSARAM...';
+            document.getElementById('text-bot').innerHTML = 'DESDE O MEU ANIVERSÁRIO!';
             bot.classList.remove('card--ofuscate');
             top.classList.remove('card--ofuscate');
         }, 250) 
@@ -53,7 +53,7 @@ function togglerDate() {
 
 export function setTogglers() {
     document.getElementById('text-top').innerHTML = 'FALTAM...';
-    document.getElementById('text-bot').innerHTML = 'PARA MEU ANIVERSÁRIO!';
+    document.getElementById('text-bot').innerHTML = 'PARA O MEU ANIVERSÁRIO!';
     document.getElementById('toggler-parallax')
     .addEventListener('click', () => {
         togglerParallax();

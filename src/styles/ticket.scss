@@ -1,3 +1,4 @@
+@import './variables.scss';
 .ticket {
     display: flex;
     height: 60px;
@@ -43,8 +44,37 @@
         padding: 5px 7px;
         background-color: rgba(0, 255, 0, 0.1);
         border: 2px outset rgba(0, 0, 0, 0.5);
+        &:hover {
+            background-color: rgba(0, 255, 0, 0.3);
+        }
         &:active {
             border-style: inset;
+            background-color: rgba(0, 255, 0, 0.5);
+        }
+    }
+    @media screen and (max-width: $screen-sm) {
+        flex-wrap: wrap;
+        &__text {
+            font-size: 150%;
+            margin: 5px 15px 0;
+        }
+        &__num {
+            font-size: 200%;
+            margin-left: 25px;
+        }
+        &__btn {
+            margin: 7px 4px;
+            button {
+                font-size: 175%;
+                width: 38px;
+                height: 38px;
+                border-radius: 19px;
+            }
+        }
+        &__reserva {
+            font-size: 175%;
+            width: 55%;
+            height: 80%;
         }
     }
 }

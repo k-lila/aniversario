@@ -18,15 +18,6 @@
     
 }
 
-.banner-container {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    width: max-content;
-    transform: translate(-50%, 50%);
-    transform-style: preserve-3d;
-}
-
 .banner {
     position: relative;
     font-size: 325%;
@@ -69,21 +60,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
-    .banner-container {
-        top: 22%;
-        button {
-            transform: perspective($perspective-sm) translateZ(50px);
-            top: 120%;
-        }
-        &__btn {
-            left: 125px;
-            width: 50px;
-        }
-        &__parallax-btn {
-            left: 75%;
-        }
-    }
+@media screen and (max-width: $screen-sm) {
     .banner {
         font-size: 180%;
         transform: perspective($perspective-sm) translateZ(45px);

@@ -62,10 +62,35 @@ function changeCounter(typeBanner) {
     });
 };
 
-export function banner(typeBanner) {
+function participate() {
+    const ingressos = Number(document.querySelector('.ticket__num').innerHTML) 
+    if (ingressos >= 1) {
+        var string_data = null;
+        if (ingressos == 1) {
+            string_data = `${ingressos} reserva, te vejo lá! ;)`
+        } else {
+            string_data = `${ingressos} reservas, até lá! ;)`
+        }
+        const panels = document.querySelectorAll('.banner__panel');
+        panels.forEach((panel, index) => {
+            panel.classList.add('banner--wave');
+            panel.addEventListener('animationend', () => {
+                panel.classList.remove('banner--wave')
+            });
+            setTimeout(() => {
+                setPanel(string_data, index)
+            }, (10 * index) + 250);
+        });
+        setTimeout(()=>{
+            document.querySelector('.ticket__num').innerHTML = 0;
+        }, 3000)
+    }
+}
+
+export function banner() {
     var typeBanner = 'regressive';
+    var todoSegundo = setInterval(() => {upBanner(typeBanner)}, 1000);
     upBanner(typeBanner);
-    let todoSegundo = setInterval(() => {upBanner(typeBanner)}, 1000);
     document.getElementById('toggler-date')
     .addEventListener('click', () => {
         clearInterval(todoSegundo);
@@ -78,5 +103,18 @@ export function banner(typeBanner) {
         todoSegundo = setInterval(() => {
             upBanner(typeBanner);
         }, 1000);
-    });    
+    });
+    document.getElementById('participate')
+    .addEventListener('click', () => {
+        const ingressos = Number(document.querySelector('.ticket__num').innerHTML);
+        if (ingressos > 0) {
+            clearInterval(todoSegundo);
+            participate();
+            setTimeout(()=>{
+                todoSegundo = setInterval(() => {
+                    upBanner(typeBanner);
+                }, 1000);
+            }, 2000)
+        }
+    })
 };

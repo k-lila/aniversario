@@ -1,4 +1,3 @@
-
 @import './variables.scss';
 .card {
     position: relative;
@@ -7,7 +6,7 @@
     transition: transform 0.2s linear;
     &__glass {
         height: 100%;
-        border-radius: 10%;
+        border-radius: 60px;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
         backdrop-filter: blur(50px);
         -webkit-backdrop-filter: blur(50px);
@@ -45,6 +44,14 @@
         border: 2px solid rgba(255, 255, 255, 0.2);
         transform-style: preserve-3d;
     }
+    &__banner {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width: max-content;
+        transform: translate(-50%, 50%);
+        transform-style: preserve-3d;
+    }
     &--ofuscate {
         opacity: 0;
         transition: opacity 0.2s ease-out;
@@ -52,30 +59,42 @@
     @media screen and (orientation: portrait) {
         width: 90vw;
         height: 90vw;
-        @media screen and (max-width: 767px) {
-            height: 50vh;
-        }
     }
     @media screen and (orientation: landscape) {
         height: 90svh;
         width: 90svh;
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: $screen-sm) {
         &__text-top,
         &__text-bot {
             font-size: 150%;
-            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(50px);
+            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(30px);
         }
         &__text-top {
-            top: 6%;
+            top: -27%;
         }    
         &__text-bot {
-            top: 60%;
+            top: 100%;
             width: 90%;
         }
+        &__banner {
+            top: 10%;
+            button {
+                transform: perspective($perspective-sm) translateZ(50px);
+                top: 120%;
+            }
+            &__btn {
+                left: 125px;
+                width: 50px;
+            }
+            &__parallax-btn {
+                left: 75%;
+            }
+        }
         &__menu {
-            top: 39%;
-            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(40px) scale(0.7);
+            top: 24%;
+            height: 145px;
+            transform: translate(-50%, 50%) perspective($perspective-sm) translateZ(35px) scale(0.7);
         }
     }
 }

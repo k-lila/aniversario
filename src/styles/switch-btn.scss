@@ -39,7 +39,6 @@
         transition: 0.3s ease-out;
         left: 1px;
     }
-    
     &--on {
         transition: 0.3s ease-out;
         background-color: rgba(0, 128, 0, 0.8);
@@ -60,7 +59,19 @@
     &--prog {
         background-color: transparent;
     }
+}
 
-    
-    
+@media screen and (max-width: $screen-sm) {
+    .btn-container {
+        height: max-content;
+        margin: auto 0;
+    }
+    .switch-btn {
+        margin: 6px 2px;
+        height: 32px;
+        &__toggler {
+            margin-top: 0.5px;
+            height: 28px;
+        }
+    }
 }
