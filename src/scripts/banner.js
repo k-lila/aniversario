@@ -113,9 +113,8 @@ export function banner() {
             participate();
             document.querySelector('.card').classList.remove('card--parallax');
             setTimeout(() => {
-                document.querySelector('.ticket__num').innerHTML = '0';
                 return location.reload()
-            }, 3000);
+            }, 4000);
         }
     })
 };

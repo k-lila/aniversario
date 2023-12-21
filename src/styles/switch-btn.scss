@@ -69,9 +69,22 @@
     .switch-btn {
         margin: 6px 2px;
         height: 32px;
+        border-radius: 16px;
         &__toggler {
             margin-top: 0.5px;
             height: 28px;
+            width: 28px;
+            border-radius: 14px;
+        }
+        &--on {
+            .switch-btn__toggler {
+                left: 29px;
+            }
+        }
+        &--reg {
+            .switch-btn__toggler {
+                left: 29px;
+            }
         }
     }
 }
