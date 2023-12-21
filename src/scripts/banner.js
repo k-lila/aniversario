@@ -81,9 +81,6 @@ function participate() {
                 setPanel(string_data, index)
             }, (10 * index) + 250);
         });
-        setTimeout(()=>{
-            document.querySelector('.ticket__num').innerHTML = 0;
-        }, 3000)
     }
 }
 
@@ -110,11 +107,10 @@ export function banner() {
         if (ingressos > 0) {
             clearInterval(todoSegundo);
             participate();
-            setTimeout(()=>{
-                todoSegundo = setInterval(() => {
-                    upBanner(typeBanner);
-                }, 1000);
-            }, 2000)
         }
+        setTimeout(() => {
+            document.querySelector('.ticket__num').innerHTML = '0';
+            return banner()
+        }, 5000);
     })
 };
