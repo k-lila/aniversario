@@ -10,8 +10,8 @@ function parallaxMouse(event) {
 }
 
 function parallaxMobile(event) {
-    const devicex = event.beta - 30;
-    const devicey = event.gamma;
+    const devicex = (event.beta - 30) * 0.5;
+    const devicey = event.gamma * 0.5;
     document.querySelector('.card').style.setProperty('--rotatex', `${devicex * -1}deg`);
     document.querySelector('.card').style.setProperty('--rotatey', `${devicey}deg`);
 }
