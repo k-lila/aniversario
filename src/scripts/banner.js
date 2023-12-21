@@ -111,11 +111,11 @@ export function banner() {
         if (ingressos > 0) {
             clearInterval(todoSegundo);
             participate();
+            document.querySelector('.card').classList.remove('card--parallax');
+            setTimeout(() => {
+                document.querySelector('.ticket__num').innerHTML = '0';
+                return location.reload()
+            }, 3000);
         }
-        document.querySelector('.card').classList.remove('card--parallax');
-        setTimeout(() => {
-            document.querySelector('.ticket__num').innerHTML = '0';
-            return location.reload()
-        }, 3000);
     })
 };

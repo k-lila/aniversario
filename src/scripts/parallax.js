@@ -10,10 +10,12 @@ function parallaxMouse(event) {
 }
 
 function parallaxMobile(event) {
-    const devicex = ((event.beta - 30) * 0.8).toFixed(2);
-    const devicey = (event.gamma * 0.8).toFixed(2);
-    document.querySelector('.card').style.setProperty('--rotatex', `${devicex * -1}deg`);
-    document.querySelector('.card').style.setProperty('--rotatey', `${devicey}deg`);
+    if (event.beta) {
+        const devicex = ((event.beta - 30)).toFixed(2);
+        const devicey = (event.gamma).toFixed(2);
+        document.querySelector('.card').style.setProperty('--rotatex', `${devicex * -1}deg`);
+        document.querySelector('.card').style.setProperty('--rotatey', `${devicey}deg`);
+    }
 }
 
 function toggleParallax(toggler) {
