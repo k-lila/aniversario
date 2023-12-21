@@ -82,12 +82,18 @@ function participate() {
             }, (10 * index) + 250);
         });
     }
-}
+};
+
+function everySecond(typeBanner) {
+    return setInterval(() => {
+        upBanner(typeBanner);
+    }, 1000);
+};
 
 export function banner() {
     var typeBanner = 'regressive';
-    var todoSegundo = setInterval(() => {upBanner(typeBanner)}, 1000);
     upBanner(typeBanner);
+    var todoSegundo = everySecond(typeBanner)
     document.getElementById('toggler-date')
     .addEventListener('click', () => {
         clearInterval(todoSegundo);
@@ -97,9 +103,7 @@ export function banner() {
             typeBanner = 'progressive';
         };
         changeCounter(typeBanner);
-        todoSegundo = setInterval(() => {
-            upBanner(typeBanner);
-        }, 1000);
+        todoSegundo = everySecond(typeBanner)
     });
     document.getElementById('participate')
     .addEventListener('click', () => {
@@ -108,9 +112,10 @@ export function banner() {
             clearInterval(todoSegundo);
             participate();
         }
+        document.querySelector('.card').classList.remove('card--parallax');
         setTimeout(() => {
             document.querySelector('.ticket__num').innerHTML = '0';
-            return banner()
-        }, 5000);
+            return location.reload()
+        }, 3000);
     })
 };

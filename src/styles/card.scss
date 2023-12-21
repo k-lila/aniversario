@@ -2,8 +2,7 @@
 .card {
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
-    transition: transform 0.2s linear;
+    transition: all 0.2s linear;
     &__glass {
         height: 100%;
         border-radius: 60px;
@@ -55,6 +54,9 @@
     &--ofuscate {
         opacity: 0;
         transition: opacity 0.2s ease-out;
+    }
+    &--parallax {
+        transform: rotateX(var(--rotatex)) rotateY(var(--rotatey));
     }
     @media screen and (orientation: portrait) {
         width: 90vw;
